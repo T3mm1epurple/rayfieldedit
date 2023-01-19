@@ -12,7 +12,7 @@ iRay  | Programming
 
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
-local RayfieldFolder = "TemHubV2"
+local RayfieldFolder = "TemHubV3"
 if not isfolder(RayfieldFolder) then
 makefolder(RayfieldFolder)
 end
