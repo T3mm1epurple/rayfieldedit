@@ -1,3 +1,4 @@
+print("loaded")
 --[[
 
 Rayfield Interface Suite
