@@ -1849,6 +1849,16 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 			end
 
+            function DropdownSettings:Add(NewOption)
+            table.insert(DropdownSettings.Options, NewOption)
+            return DropdownSettings
+        end
+
+        function DropdownSettings:Remove(NewOption)
+            table.remove(DropdownSettings.Options, NewOption)
+            return DropdownSettings
+        end
+
 			if Settings.ConfigurationSaving then
 				if Settings.ConfigurationSaving.Enabled and DropdownSettings.Flag then
 					RayfieldLibrary.Flags[DropdownSettings.Flag] = DropdownSettings
