@@ -1,4 +1,3 @@
-print("IM GONNA START CRYING")
 --[[
 
 Rayfield Interface Suite
@@ -1822,6 +1821,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
             function removeoption(Option)
                 Dropdown.List[Option]:Destroy()
+                SaveConfiguration()
             end
 
 			for _, Option in ipairs(DropdownSettings.Options) do
