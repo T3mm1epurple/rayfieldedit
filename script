@@ -1858,7 +1858,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			return DropdownSettings
 		end
 
-        function DropdownSettings:Add(NewOption)
+        --[[function DropdownSettings:Add(NewOption)
             table.insert(DropdownSettings.Options, NewOption)
             return DropdownSettings
         end
@@ -1866,7 +1866,7 @@ function RayfieldLibrary:CreateWindow(Settings)
         function DropdownSettings:Remove(NewOption)
             table.remove(DropdownSettings.Options, NewOption)
             return DropdownSettings
-        end
+        end]]--
 
         if Settings.ConfigurationSaving then
             if Settings.ConfigurationSaving.Enabled and DropdownSettings.Flag then
