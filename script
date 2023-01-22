@@ -1,4 +1,3 @@
-print("halfadded")
 --[[
 
 Rayfield Interface Suite
@@ -1820,6 +1819,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end)
             end
 
+            function removeoption(Option)
+                Dropdown.List[Option]:Destroy()
+            end
+
 			for _, Option in ipairs(DropdownSettings.Options) do
 				addoption(Option)
 			end
@@ -1861,6 +1864,17 @@ function RayfieldLibrary:CreateWindow(Settings)
 
         function DropdownSettings:Remove(NewOption)
             table.remove(DropdownSettings.Options, NewOption)
+            removeoption(NewOption)
+        end
+
+        function DropdownSettings:Clear()
+            local tabdog = DropdownSettings.Options
+            for k in pairs (tabdog) do
+                tabdog [k] = nil
+            end
+            for i, uibutton in pairs(Dropdown.List:GetChildren()) do
+                uibutton:Destroy()
+            end
         end
 
 			if Settings.ConfigurationSaving then
