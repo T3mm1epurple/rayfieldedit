@@ -1,3 +1,4 @@
+print("IM GONNA START CRYING")
 --[[
 
 Rayfield Interface Suite
@@ -1863,7 +1864,7 @@ function RayfieldLibrary:CreateWindow(Settings)
         end
 
         function DropdownSettings:Remove(NewOption)
-            table.remove(DropdownSettings.Options, NewOption)
+            DropdownSettings.Options[NewOption] = nil
             removeoption(NewOption)
         end
 
