@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v6.5")
+print("Temmies Rayfield Edit v3")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -1798,12 +1798,14 @@ function RayfieldLibrary:CreateWindow(Settings)
 								TweenService:Create(droption, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
 							end
 						end
+                        if DropdownSettings.Select then
 						TweenService:Create(DropdownOption.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 						TweenService:Create(DropdownOption, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(40, 40, 40)}):Play()
 						Debounce = true
 						wait(0.2)
 						TweenService:Create(DropdownOption.UIStroke, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
 						wait(0.1)
+                    end
 						TweenService:Create(Dropdown, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(1, -10, 0, 45)}):Play()
 						for _, DropdownOpt in ipairs(Dropdown.List:GetChildren()) do
 							if DropdownOpt.ClassName == "Frame" and DropdownOpt.Name ~= "Placeholder" then
