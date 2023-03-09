@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit")
+print("Temmies Rayfield Edit v3")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -1756,7 +1756,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				TweenService:Create(Dropdown, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
 
-            function addoption(Option)
+            local function addoption(Option)
                 local DropdownOption = Elements.Template.Dropdown.List.Template:Clone()
 				DropdownOption.Name = Option
 				DropdownOption.Title.Text = Option
@@ -1821,18 +1821,18 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end)
             end
 
-            function removeoption(Option)
+            local function removeoption(Option)
                 Dropdown.List[Option]:Destroy()
                 SaveConfiguration()
                 return DropdownSettings
             end
 
-            function DropdownSettings:Add(NewOption)
+            local function DropdownSettings:Add(NewOption)
                 table.insert(DropdownSettings.Options, NewOption)
                 addoption(NewOption)
             end
     
-            function DropdownSettings:Remove(NewOption)
+            local function DropdownSettings:Remove(NewOption)
                 DropdownSettings.Options[NewOption] = nil
                 removeoption(NewOption)
                 return DropdownSettings
@@ -1843,7 +1843,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			end
 
 
-			function DropdownSettings:Set(NewOption)
+			local function DropdownSettings:Set(NewOption)
 				Dropdown.Selected.Text = NewOption
 				DropdownSettings.CurrentOption = NewOption
 				local Success, Response = pcall(function()
@@ -1872,7 +1872,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 			end
 
-        function DropdownSettings:Clear()
+       local function DropdownSettings:Clear()
             local tabdog = DropdownSettings.Options
             for k in pairs (tabdog) do
                 tabdog [k] = nil
