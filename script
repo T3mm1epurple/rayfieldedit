@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("T3mm1es rayfield lib edit")
+print("Temmies Rayfield Edit")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -1816,6 +1816,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 						Dropdown.List.Visible = false
 						Debounce = false	
 						SaveConfiguration()
+                        return DropdownSettings
 					end
 				end)
             end
@@ -1823,6 +1824,7 @@ function RayfieldLibrary:CreateWindow(Settings)
             function removeoption(Option)
                 Dropdown.List[Option]:Destroy()
                 SaveConfiguration()
+                return DropdownSettings
             end
 
 			for _, Option in ipairs(DropdownSettings.Options) do
@@ -1867,6 +1869,7 @@ function RayfieldLibrary:CreateWindow(Settings)
         function DropdownSettings:Remove(NewOption)
             DropdownSettings.Options[NewOption] = nil
             removeoption(NewOption)
+            return DropdownSettings
         end
 
         function DropdownSettings:Clear()
@@ -1877,6 +1880,7 @@ function RayfieldLibrary:CreateWindow(Settings)
             for i, uibutton in pairs(Dropdown.List:GetChildren()) do
                 uibutton:Destroy()
             end
+            return DropdownSettings
         end
 
 			if Settings.ConfigurationSaving then
