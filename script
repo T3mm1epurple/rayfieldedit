@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3")
+print("Temmies Rayfield Edit v6.5")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -1774,8 +1774,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 				DropdownOption.Interact.ZIndex = 50
 				DropdownOption.Interact.MouseButton1Click:Connect(function()
-					if Dropdown.Selected.Text ~= Option then
+					if Dropdown.Selected.Text ~= Option and DropdownSettings.Select or DropdownSettings.Select == false then
+                        if DropdownSettings.Select then
 						Dropdown.Selected.Text = Option
+                        end
 						
 						local Success, Response = pcall(function()
 							DropdownSettings.Callback(Option)
