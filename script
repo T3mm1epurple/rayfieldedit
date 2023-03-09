@@ -1827,6 +1827,17 @@ function RayfieldLibrary:CreateWindow(Settings)
                 return DropdownSettings
             end
 
+            function DropdownSettings:Add(NewOption)
+                table.insert(DropdownSettings.Options, NewOption)
+                addoption(NewOption)
+            end
+    
+            function DropdownSettings:Remove(NewOption)
+                DropdownSettings.Options[NewOption] = nil
+                removeoption(NewOption)
+                return DropdownSettings
+            end
+
 			for _, Option in ipairs(DropdownSettings.Options) do
 				addoption(Option)
 			end
@@ -1860,17 +1871,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 				end
 			end
-
-            function DropdownSettings:Add(NewOption)
-            table.insert(DropdownSettings.Options, NewOption)
-            addoption(NewOption)
-        end
-
-        function DropdownSettings:Remove(NewOption)
-            DropdownSettings.Options[NewOption] = nil
-            removeoption(NewOption)
-            return DropdownSettings
-        end
 
         function DropdownSettings:Clear()
             local tabdog = DropdownSettings.Options
