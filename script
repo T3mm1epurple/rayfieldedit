@@ -1827,12 +1827,12 @@ function RayfieldLibrary:CreateWindow(Settings)
                 return DropdownSettings
             end
 
-            local function DropdownSettings:Add(NewOption)
+            function DropdownSettings:Add(NewOption)
                 table.insert(DropdownSettings.Options, NewOption)
                 addoption(NewOption)
             end
     
-            local function DropdownSettings:Remove(NewOption)
+            function DropdownSettings:Remove(NewOption)
                 DropdownSettings.Options[NewOption] = nil
                 removeoption(NewOption)
                 return DropdownSettings
@@ -1843,7 +1843,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			end
 
 
-			local function DropdownSettings:Set(NewOption)
+			function DropdownSettings:Set(NewOption)
 				Dropdown.Selected.Text = NewOption
 				DropdownSettings.CurrentOption = NewOption
 				local Success, Response = pcall(function()
@@ -1872,7 +1872,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 			end
 
-       local function DropdownSettings:Clear()
+       function DropdownSettings:Clear()
             local tabdog = DropdownSettings.Options
             for k in pairs (tabdog) do
                 tabdog [k] = nil
