@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-
+print("T3mm1es rayfield lib edit")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -1761,7 +1761,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				DropdownOption.Name = Option
 				DropdownOption.Title.Text = Option
 				DropdownOption.Parent = Dropdown.List
-                print(Dropdown)
+                print(Dropdown.Name, Option)
 				DropdownOption.Visible = true
 
 				if DropdownSettings.CurrentOption == Option then
@@ -1862,7 +1862,6 @@ function RayfieldLibrary:CreateWindow(Settings)
             function DropdownSettings:Add(NewOption)
             table.insert(DropdownSettings.Options, NewOption)
             addoption(NewOption)
-            print(Dropdown)
         end
 
         function DropdownSettings:Remove(NewOption)
