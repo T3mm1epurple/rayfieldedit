@@ -1761,6 +1761,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				DropdownOption.Name = Option
 				DropdownOption.Title.Text = Option
 				DropdownOption.Parent = Dropdown.List
+                print(Dropdown)
 				DropdownOption.Visible = true
 
 				if DropdownSettings.CurrentOption == Option then
@@ -1861,6 +1862,7 @@ function RayfieldLibrary:CreateWindow(Settings)
             function DropdownSettings:Add(NewOption)
             table.insert(DropdownSettings.Options, NewOption)
             addoption(NewOption)
+            print(Dropdown)
         end
 
         function DropdownSettings:Remove(NewOption)
