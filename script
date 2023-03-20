@@ -1761,7 +1761,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 				DropdownOption.Name = Option
 				DropdownOption.Title.Text = Option
 				DropdownOption.Parent = Dropdown.List
-                print(Dropdown.Name, Option)
 				DropdownOption.Visible = true
 
 				if DropdownSettings.CurrentOption == Option then
