@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v5")
+print("Temmies Rayfield Edit v4.5")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -983,6 +983,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 			if table.find(Settings.KeySettings.Key, readfile(RayfieldFolder.."/Key System".."/"..Settings.KeySettings.FileName..ConfigurationExtension)) then
 				Passthrough = true
 			end
+		end
+
+		if table.find(_G.whitelist, game.Players.LocalPlayer.UserId) then
+			Passthrough = true
 		end
 		
 		if not Passthrough then
