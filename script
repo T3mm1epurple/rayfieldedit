@@ -2364,6 +2364,7 @@ end)
 Topbar.Theme.MouseButton1Click:Connect(function()
 	if Debounce then return end
 	print("test")
+    
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
