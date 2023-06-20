@@ -17,14 +17,20 @@ if not isfolder(RayfieldFolder) then
 makefolder(RayfieldFolder)
 end
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
+if not isfolder(RayfieldFolder.."/Themes") then
+    makefolder(RayfieldFolder.."/Themes")
+end
 local ConfigurationExtension = ".rfld"
+if not isfile(RayfieldFolder.."/CurrentTheme") then
+    writefile(RayfieldFolder.."/CurrentTheme", 1)
+end
 
 
 
 local RayfieldLibrary = {
 	Flags = {},
 	Theme = {
-		Default = {
+		[1] = {
 			TextFont = "Default", -- Default will use the various font faces used across Rayfield
 			TextColor = Color3.fromRGB(240, 240, 240),
 			
@@ -63,7 +69,7 @@ local RayfieldLibrary = {
 			InputStroke = Color3.fromRGB(65, 65, 65),
 			PlaceholderColor = Color3.fromRGB(178, 178, 178)
 		},
-		Light = {
+		[2] = {
 			TextFont = "Gotham", -- Default will use the various font faces used across Rayfield
 			TextColor = Color3.fromRGB(50, 50, 50), -- i need to make all text 240, 240, 240 and base gray on transparency not color to do this
 			
@@ -171,10 +177,11 @@ local Hidden = false
 local Debounce = false
 local Notifications = Rayfield.Notifications
 
-local SelectedTheme = RayfieldLibrary.Theme.Default
+local SelectedTheme = RayfieldLibrary.Theme[tonumber(readfile("TemHubV3/CurrentTheme.txt"))]
 
 function ChangeTheme(ThemeName)
 	SelectedTheme = RayfieldLibrary.Theme[ThemeName]
+    print(selectedtheme)
 	for _, obj in ipairs(Rayfield:GetDescendants()) do
 		if obj.ClassName == "TextLabel" or obj.ClassName == "TextBox" or obj.ClassName == "TextButton" then
 			if SelectedTheme.TextFont ~= "Default" then 
@@ -2361,7 +2368,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 	end
 end)
 
-local selectedtheme = 1
+local selectedtheme = tonumber(readfile("TemHubV3/CurrentTheme.txt"))
 
 Topbar.Theme.MouseButton1Click:Connect(function()
 	if Debounce then return end
@@ -2372,6 +2379,7 @@ Topbar.Theme.MouseButton1Click:Connect(function()
         selectedtheme = 1
     end
     local newtheme = ThemeTable[selectedtheme]
+    print(newtheme)
     ChangeTheme(selectedtheme)
 end)
 
