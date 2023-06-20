@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3 (newupd)")
+print("Temmies Rayfield Edit v3 (themes!!)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -2361,10 +2361,18 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 	end
 end)
 
+local selectedtheme = 1
+
 Topbar.Theme.MouseButton1Click:Connect(function()
 	if Debounce then return end
-	print("test")
-    
+    local ThemeTable = RayfieldLibrary.Theme
+    local count = #ThemeTable
+    selectedtheme += 1
+    if count < selectedtheme then
+        selectedtheme = 1
+    end
+    local newtheme = ThemeTable[selectedtheme]
+    ChangeTheme(selectedtheme)
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
