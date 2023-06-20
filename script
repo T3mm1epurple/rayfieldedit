@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3 (themes!!)")
+print("Temmies Rayfield Edit v3 (newupd)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -22,7 +22,7 @@ if not isfolder(RayfieldFolder.."/Themes") then
 end
 local ConfigurationExtension = ".rfld"
 if not isfile(RayfieldFolder.."/CurrentTheme") then
-    writefile(RayfieldFolder.."/CurrentTheme", 1)
+    writefile(RayfieldFolder.."/CurrentTheme", "1")
 end
 
 
@@ -2378,8 +2378,8 @@ Topbar.Theme.MouseButton1Click:Connect(function()
     if count < selectedtheme then
         selectedtheme = 1
     end
-    local newtheme = ThemeTable[selectedtheme]
-    print(newtheme)
+    print(ThemeTable[selectedtheme])
+    writefile(RayfieldFolder.."/CurrentTheme", tostring(selectedtheme))
     ChangeTheme(selectedtheme)
 end)
 
