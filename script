@@ -9,7 +9,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3 (newupd)")
+print("Temmies Rayfield Edit v3 (theme!!)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
