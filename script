@@ -166,7 +166,7 @@ function ChangeTheme(ThemeName)
     end
 
         for _, obj in ipairs(Rayfield.Main.TabList:GetChildren()) do
-            if obj.ClassName = "Frame" then
+            if obj.ClassName == "Frame" then
                     obj.UIStroke.Color = SelectedTheme.TabStroke
             end
         end
