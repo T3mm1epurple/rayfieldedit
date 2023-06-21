@@ -37,7 +37,6 @@ local RayfieldLibrary = {
             Background = Color3.fromRGB(25, 25, 25),
             Topbar = Color3.fromRGB(34, 34, 34),
             Shadow = Color3.fromRGB(20, 20, 20),
-            NotificationBackground = Color3.fromRGB(20, 20, 20),
             NotificationActionsBackground = Color3.fromRGB(230, 230, 230),
             TabBackground = Color3.fromRGB(80, 80, 80),
             TabStroke = Color3.fromRGB(85, 85, 85),
@@ -1171,13 +1170,21 @@ function RayfieldLibrary:CreateWindow(Settings)
 		if SelectedTheme ~= RayfieldLibrary.Theme.Default then
 			TabButton.Shadow.Visible = false
 		end
+        coroutine.resume(coroutine.create(function()
+            while wait() do
 		TabButton.UIStroke.Color = SelectedTheme.TabStroke
+            end
+        end))
 		-- Animate
 		wait(0.1)
 		if FirstTab then
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackground
 			TabButton.Image.ImageColor3 = SelectedTheme.TabTextColor
-			TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
+            TabButton.Title.TextColor3 = SelectedTheme.TabTextColor
+                end
+            end))
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.7}):Play()
 			TweenService:Create(TabButton.Title, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0.2}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {ImageTransparency = 0.2}):Play()
@@ -1186,9 +1193,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TweenService:Create(TabButton.Shadow, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {ImageTransparency = 0.7}):Play()
 		else
 			FirstTab = Name
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			TabButton.BackgroundColor3 = SelectedTheme.TabBackgroundSelected
 			TabButton.Image.ImageColor3 = SelectedTheme.SelectedTabTextColor
 			TabButton.Title.TextColor3 = SelectedTheme.SelectedTabTextColor
+                end
+            end))
 			TweenService:Create(TabButton.Shadow, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {ImageTransparency = 0.9}):Play()
 			TweenService:Create(TabButton.Image, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {ImageTransparency = 0}):Play()
 			TweenService:Create(TabButton, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
@@ -1540,8 +1551,12 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Label.UIStroke.Transparency = 1
 			Label.Title.TextTransparency = 1
 			
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Label.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
 			Label.UIStroke.Color = SelectedTheme.SecondaryElementStroke
+                end
+            end))
 
 			TweenService:Create(Label, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Label.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
@@ -1573,8 +1588,12 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Paragraph.Title.TextTransparency = 1
 			Paragraph.Content.TextTransparency = 1
 			
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Paragraph.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
 			Paragraph.UIStroke.Color = SelectedTheme.SecondaryElementStroke
+                end
+            end))
 			
 			TweenService:Create(Paragraph, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Paragraph.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
@@ -1601,8 +1620,12 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Input.UIStroke.Transparency = 1
 			Input.Title.TextTransparency = 1
 			
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Input.InputFrame.BackgroundColor3 = SelectedTheme.InputBackground
 			Input.InputFrame.UIStroke.Color = SelectedTheme.InputStroke
+                end
+            end))
 
 			TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
@@ -1880,8 +1903,12 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Keybind.UIStroke.Transparency = 1
 			Keybind.Title.TextTransparency = 1
 			
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Keybind.KeybindFrame.BackgroundColor3 = SelectedTheme.InputBackground
 			Keybind.KeybindFrame.UIStroke.Color = SelectedTheme.InputStroke
+                end
+            end))
 
 			TweenService:Create(Keybind, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Keybind.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
@@ -1990,7 +2017,11 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Toggle.BackgroundTransparency = 1
 			Toggle.UIStroke.Transparency = 1
 			Toggle.Title.TextTransparency = 1
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Toggle.Switch.BackgroundColor3 = SelectedTheme.ToggleBackground
+                end
+            end))
 			
 			if SelectedTheme ~= RayfieldLibrary.Theme.Default then
 				Toggle.Switch.Shadow.Visible = false
@@ -2002,14 +2033,30 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 			if not ToggleSettings.CurrentValue then
 				Toggle.Switch.Indicator.Position = UDim2.new(1, -40, 0.5, 0)
+                coroutine.resume(coroutine.create(function()
+                    while wait() do
+                        if not ToggleSettings.CurrentValue then
 				Toggle.Switch.Indicator.UIStroke.Color = SelectedTheme.ToggleDisabledStroke
 				Toggle.Switch.Indicator.BackgroundColor3 = SelectedTheme.ToggleDisabled
 				Toggle.Switch.UIStroke.Color = SelectedTheme.ToggleDisabledOuterStroke
+                        else
+                            break
+                        end
+                    end
+                end))
 			else
 				Toggle.Switch.Indicator.Position = UDim2.new(1, -20, 0.5, 0)
+                coroutine.resume(coroutine.create(function()
+                    while wait() do
+                        if ToggleSettings.CurrentValue then
 				Toggle.Switch.Indicator.UIStroke.Color = SelectedTheme.ToggleEnabledStroke
 				Toggle.Switch.Indicator.BackgroundColor3 = SelectedTheme.ToggleEnabled
 				Toggle.Switch.UIStroke.Color = SelectedTheme.ToggleEnabledOuterStroke
+                        else
+                            break
+                        end
+                    end
+                end))
 			end
 
 			Toggle.MouseEnter:Connect(function()
@@ -2140,9 +2187,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 				Slider.Main.Shadow.Visible = false
 			end
 			
+            coroutine.resume(coroutine.create(function()
+                while wait() do
 			Slider.Main.BackgroundColor3 = SelectedTheme.SliderBackground
 			Slider.Main.UIStroke.Color = SelectedTheme.SliderStroke
 			Slider.Main.Progress.BackgroundColor3 = SelectedTheme.SliderProgress
+                end
+            end))
 
 			TweenService:Create(Slider, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Slider.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
