@@ -6,7 +6,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3 (NEW)")
+print("Temmies Rayfield Edit v3 (theme fixed)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -48,13 +48,8 @@ local RayfieldLibrary = {
             SliderStroke = Color3.fromRGB(48, 119, 177),
             ToggleBackground = Color3.fromRGB(30, 30, 30),
             ToggleEnabled = Color3.fromRGB(0, 146, 214),
-            ToggleDisabled = Color3.fromRGB(100, 100, 100),
             ToggleEnabledStroke = Color3.fromRGB(0, 170, 255),
             ToggleDisabledStroke = Color3.fromRGB(125, 125, 125),
-            ToggleEnabledOuterStroke = Color3.fromRGB(100, 100, 100),
-            ToggleDisabledOuterStroke = Color3.fromRGB(65, 65, 65),
-            InputBackground = Color3.fromRGB(30, 30, 30),
-            InputStroke = Color3.fromRGB(65, 65, 65),
             PlaceholderColor = Color3.fromRGB(178, 178, 178)
         },
 	}
@@ -154,14 +149,51 @@ function ChangeTheme(ThemeName)
 		if obj.Name == "Switch" then
 				obj.BackgroundColor3 = SelectedTheme.ToggleBackground
                 if obj.Indicator.Position == UDim2.new(1, -20, 0.5, 0) then
-                    obj.Indicator.BackgroundColor3 = SelectedTheme.ToggleEnabled
+                    obj.Indicator.BackgroundColor3 = SelectedTheme.ElementBackground
                     obj.UIStroke.Color = SelectedTheme.ToggleEnabledStroke
-                    obj.UIStroke.Color = SelectedTheme.ToggleEnabledOuterStroke
+                    obj.UIStroke.Color = SelectedTheme.ElementStroke
                     else
-                        obj.Indicator.BackgroundColor3 = SelectedTheme.ToggleDisabled
+                        obj.Indicator.BackgroundColor3 = SelectedTheme.ElementBackground
                         obj.UIStroke.Color = SelectedTheme.ToggleDisabledStroke
-                        obj.UIStroke.Color = SelectedTheme.ToggleDisabledOuterStroke
+                        obj.UIStroke.Color = SelectedTheme.ElementStroke
 			end
+        end
+    end
+
+    for _, obj in ipairs(Rayfield:GetDescendants()) do
+		if obj.Name == "Progress" then
+				obj = obj.Parent
+                obj.Progress.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
+                obj.Shadow.ImageColor3 = SelectedTheme.Background
+                obj.UIStroke.Color = SelectedTheme.ElementStroke
+                obj.Progress.UIStroke.Color = SelectedTheme.ElementStroke
+        end
+    end
+
+    for _, obj in ipairs(Rayfield:GetDescendants()) do
+		if obj.Name == "List" then
+                    for i, fram in pairs(obj:GetChildren()) do
+                        if fram:FindFirstChild("Interact") then
+                            fram.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
+                            fram.UIStroke.Color = SelectedTheme.ElementStroke
+                        end
+                    end
+        end
+    end
+
+    for _, obj in ipairs(Rayfield:GetDescendants()) do
+		if obj.Name == "InputFrame" then
+            obj.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
+            obj.UIStroke.Color = SelectedTheme.ElementStroke
+            obj.InputBox.PlaceholderColor3 = SelectedTheme.PlaceholderColor
+        end
+    end
+
+    for _, obj in ipairs(Rayfield:GetDescendants()) do
+		if obj.Name == "KeybindFrame" then
+            obj.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
+            obj.UIStroke.Color = SelectedTheme.ElementStroke
+            obj.KeybindBox.PlaceholderColor3 = SelectedTheme.PlaceholderColor
         end
     end
 
@@ -1472,8 +1504,8 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Input.UIStroke.Transparency = 1
 			Input.Title.TextTransparency = 1
 			
-			Input.InputFrame.BackgroundColor3 = SelectedTheme.InputBackground
-			Input.InputFrame.UIStroke.Color = SelectedTheme.InputStroke
+			Input.InputFrame.BackgroundColor3 = SelectedTheme.ElementBackground
+			Input.InputFrame.UIStroke.Color = SelectedTheme.ElementStroke
 			TweenService:Create(Input, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
 			TweenService:Create(Input.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
 			TweenService:Create(Input.Title, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
@@ -1826,7 +1858,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			if not ToggleSettings.CurrentValue then
 				Toggle.Switch.Indicator.Position = UDim2.new(1, -40, 0.5, 0)
 				Toggle.Switch.Indicator.UIStroke.Color = SelectedTheme.ToggleDisabledStroke
-				Toggle.Switch.Indicator.BackgroundColor3 = SelectedTheme.ToggleDisabled
+				Toggle.Switch.Indicator.BackgroundColor3 = SelectedTheme.Background
 				Toggle.Switch.UIStroke.Color = SelectedTheme.ToggleDisabledOuterStroke
 			else
 				Toggle.Switch.Indicator.Position = UDim2.new(1, -20, 0.5, 0)
@@ -1848,7 +1880,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -40, 0.5, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,12,0,12)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledStroke}):Play()
-					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleDisabled}):Play()
+					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.Background}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledOuterStroke}):Play()
 					wait(0.05)
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,17,0,17)}):Play()
@@ -1909,7 +1941,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.45, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -40, 0.5, 0)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,12,0,12)}):Play()
 					TweenService:Create(Toggle.Switch.Indicator.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = SelectedTheme.ToggleDisabledStroke}):Play()
-					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.ToggleDisabled}):Play()
+					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.8, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = SelectedTheme.Background}):Play()
 					TweenService:Create(Toggle.Switch.UIStroke, TweenInfo.new(0.55, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Color = Color3.fromRGB(65,65,65)}):Play()
 					wait(0.05)
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = UDim2.new(0,17,0,17)}):Play()
