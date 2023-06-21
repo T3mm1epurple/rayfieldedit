@@ -150,6 +150,21 @@ function ChangeTheme(ThemeName)
 			end
 		end
 	end
+
+    for _, obj in ipairs(Rayfield:GetDescendants()) do
+		if obj.Name == "Switch" then
+				obj.BackgroundColor3 = SelectedTheme.ToggleBackground
+                if obj.Indicator.Position == UDim2.new(1, -20, 0.5, 0) then
+                    obj.Indicator.BackgroundColor3 = SelectedTheme.ToggleEnabled
+                    obj.Indicator.Color = SelectedTheme.ToggleEnabledStroke
+                    obj.UIStroke.Color = SelectedTheme.ToggleEnabledOuterStroke
+                    else
+                        obj.Indicator.BackgroundColor3 = SelectedTheme.ToggleDisabled
+                        obj.Indicator.Color = SelectedTheme.ToggleDisabledStroke
+                        obj.UIStroke.Color = SelectedTheme.ToggleDisabledOuterStroke
+			end
+        end
+		end
 	
 end
 local function AddDraggingFunctionality(DragPoint, Main)
