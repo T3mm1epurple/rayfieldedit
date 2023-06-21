@@ -163,6 +163,12 @@ function ChangeTheme(ThemeName)
                         obj.UIStroke.Color = SelectedTheme.ToggleDisabledOuterStroke
 			end
         end
+
+        for _, obj in ipairs(Rayfield.Main.TabList:GetChildren()) do
+            if obj:IsA("Frame") then
+                    obj.UIStroke.Color = SelectedTheme.TabStroke
+            end
+
 		end
 	
 end
