@@ -6,7 +6,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v4 (stuff update 6)")
+print("Temmies Rayfield Edit v4 (stuff update 7)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -113,14 +113,15 @@ end
 
 local function enablemouseframe(frame, frsetting)
     local yes, no = pcall(function()
+        local text = nil
     frame.MouseEnter:Connect(function()
         if frsetting.HoverText ~= nil then
             MouseFrame.Title.Text = frsetting.HoverText
+            text = MouseFrame.Title.Text
             MouseFrame.Visible = true
         end
     end)
     frame.MouseLeave:Connect(function()
-        local text = MouseFrame.Title.Text
         wait(0.1)
         if text == MouseFrame.Title.Text then
             MouseFrame.Visible = false
