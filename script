@@ -6,7 +6,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v3 (theme update)")
+print("Temmies Rayfield Edit v4 (stuff update)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -67,7 +67,7 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 -- Interface Management
-local Rayfield = game:GetObjects("rbxassetid://10804731440")[1]
+local Rayfield = game:GetObjects("rbxassetid://14585866322")[1]
 if gethui then
 	Rayfield.Parent = gethui()
 elseif syn.protect_gui then 
@@ -95,11 +95,23 @@ else
 end
 -- Object Variables
 local Camera = workspace.CurrentCamera
+local plr = game.Players.LocalPlayer
+local Mouse = plr:GetMouse()
 local Main = Rayfield.Main
 local Topbar = Main.Topbar
 local Elements = Main.Elements
 local LoadingFrame = Main.LoadingFrame
 local TabList = Main.TabList
+
+local MouseFrame = Rayfield.MouseFrame
+coroutine.resume(coroutine.create(function()
+    RunService.Heartbeat:Connect(function()
+if MouseFrame.Visible == true then
+    MouseFrame.Position = UDim2.new(0, Mouse.X, 0, Mouse.Y + 4)
+end
+end)
+end))
+
 Rayfield.DisplayOrder = 100
 LoadingFrame.Version.Text = Release
 -- Variables
@@ -1166,6 +1178,15 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Button.Name = ButtonSettings.Name
 			Button.Title.Text = ButtonSettings.Name
 			Button.Visible = true
+            Button.MouseEnter:Connect(function()
+                if ButtonSettings.HoverText ~= nil then
+                    MouseFrame.Title.Text = ButtonSettings.HoverText
+                    MouseFrame.Visible = true
+                end
+            end)
+            Button.MouseLeave:Connect(function()
+                    MouseFrame.Visible = false
+            end)
 			Button.Parent = TabPage
 			Button.BackgroundTransparency = 1
 			Button.UIStroke.Transparency = 1
