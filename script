@@ -6,7 +6,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v4 (stuff update 2)")
+print("Temmies Rayfield Edit v4 (stuff update 5)")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV3"
@@ -109,6 +109,26 @@ local function calculateSize(String)
 	local Lines = math.ceil(string.len(String) / 50) -- / 30 should be replaced with the max characters on your line.
 	MouseFrame.Size = UDim2.fromOffset(210, Lines * 25) -- * 14 should be replaced with however big you want a line to be
     -- Also Replace Tip to whatever TextLabel you're changing the size of.
+end
+
+local function enablemouseframe(frame, frsetting)
+    local yes, no = pcall(function()
+    frame.MouseEnter:Connect(function()
+        if frsetting.HoverText ~= nil then
+            MouseFrame.Title.Text = frsetting.HoverText
+            MouseFrame.Visible = true
+        end
+    end)
+    frame.MouseLeave:Connect(function()
+        wait(0.1)
+        if MouseFrame.Visible == true then
+            MouseFrame.Visible = false
+        end
+    end)
+end)
+if no then
+    print("HoverText value does not exist")
+end
 end
 
 coroutine.resume(coroutine.create(function()
@@ -1186,15 +1206,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Button.Name = ButtonSettings.Name
 			Button.Title.Text = ButtonSettings.Name
 			Button.Visible = true
-            Button.MouseEnter:Connect(function()
-                if ButtonSettings.HoverText ~= nil then
-                    MouseFrame.Title.Text = ButtonSettings.HoverText
-                    MouseFrame.Visible = true
-                end
-            end)
-            Button.MouseLeave:Connect(function()
-                    MouseFrame.Visible = false
-            end)
+            enablemouseframe(Button, ButtonSettings)
 			Button.Parent = TabPage
 			Button.BackgroundTransparency = 1
 			Button.UIStroke.Transparency = 1
@@ -1253,6 +1265,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			ColorPicker.Name = ColorPickerSettings.Name
 			ColorPicker.Title.Text = ColorPickerSettings.Name
 			ColorPicker.Visible = true
+            enablemouseframe(ColorPicker, ColorPickerSettings)
 			ColorPicker.Parent = TabPage
 			ColorPicker.Size = UDim2.new(1, -10, 0.028, 35)
 			Background.Size = UDim2.new(0, 39, 0, 22)
@@ -1523,6 +1536,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Input.Name = InputSettings.Name
 			Input.Title.Text = InputSettings.Name
 			Input.Visible = true
+            enablemouseframe(Input, InputSettings)
 			Input.Parent = TabPage
 			Input.BackgroundTransparency = 1
 			Input.UIStroke.Transparency = 1
@@ -1577,6 +1591,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			end
 			Dropdown.Title.Text = DropdownSettings.Name
 			Dropdown.Visible = true
+            enablemouseframe(Dropdown, DropdownSettings)
 			Dropdown.Parent = TabPage
 			Dropdown.List.Visible = false
 			Dropdown.Selected.Text = DropdownSettings.CurrentOption
@@ -1769,6 +1784,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Keybind.Name = KeybindSettings.Name
 			Keybind.Title.Text = KeybindSettings.Name
 			Keybind.Visible = true
+            enablemouseframe(Keybind, KeybindSettings)
 			Keybind.Parent = TabPage
 			Keybind.BackgroundTransparency = 1
 			Keybind.UIStroke.Transparency = 1
@@ -1867,15 +1883,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Toggle.Name = ToggleSettings.Name
 			Toggle.Title.Text = ToggleSettings.Name
 			Toggle.Visible = true
-            Toggle.MouseEnter:Connect(function()
-                if ToggleSettings.HoverText ~= nil then
-                    MouseFrame.Title.Text = ToggleSettings.HoverText
-                    MouseFrame.Visible = true
-                end
-            end)
-            Toggle.MouseLeave:Connect(function()
-                    MouseFrame.Visible = false
-            end)
+            enablemouseframe(Toggle, ToggleSettings)
 			Toggle.Parent = TabPage
 			Toggle.BackgroundTransparency = 1
 			Toggle.UIStroke.Transparency = 1
@@ -2009,6 +2017,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Slider.Name = SliderSettings.Name
 			Slider.Title.Text = SliderSettings.Name
 			Slider.Visible = true
+            enablemouseframe(Slider, SliderSettings)
 			Slider.Parent = TabPage
 			Slider.BackgroundTransparency = 1
 			Slider.UIStroke.Transparency = 1
