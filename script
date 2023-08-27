@@ -107,7 +107,7 @@ local MouseFrame = Rayfield.MouseFrame
 
 local function calculateSize(String)
 	local Lines = math.ceil(string.len(String) / 50) -- / 30 should be replaced with the max characters on your line.
-	MouseFrame.Size = UDim2.fromOffset(210, Lines * 25) -- * 14 should be replaced with however big you want a line to be
+	MouseFrame.Size = UDim2.fromOffset(210, Lines * 20) -- * 14 should be replaced with however big you want a line to be
     -- Also Replace Tip to whatever TextLabel you're changing the size of.
 end
 
@@ -120,8 +120,9 @@ local function enablemouseframe(frame, frsetting)
         end
     end)
     frame.MouseLeave:Connect(function()
+        local text = MouseFrame.Title.Text
         wait(0.1)
-        if MouseFrame.Visible == true then
+        if text == MouseFrame.Title.Text then
             MouseFrame.Visible = false
         end
     end)
