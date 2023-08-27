@@ -14,9 +14,6 @@ if not isfolder(RayfieldFolder) then
 makefolder(RayfieldFolder)
 end
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
-if not isfolder(RayfieldFolder.."/Themes") then
-    makefolder(RayfieldFolder.."/Themes")
-end
 local ConfigurationExtension = ".rfld"
 if not isfile(RayfieldFolder.."/currenttheme.txt") then
     writefile(RayfieldFolder.."/currenttheme.txt", "1")
