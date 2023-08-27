@@ -1859,6 +1859,15 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Toggle.Name = ToggleSettings.Name
 			Toggle.Title.Text = ToggleSettings.Name
 			Toggle.Visible = true
+            Toggle.MouseEnter:Connect(function()
+                if ToggleSettings.HoverText ~= nil then
+                    MouseFrame.Title.Text = ToggleSettings.HoverText
+                    MouseFrame.Visible = true
+                end
+            end)
+            Toggle.MouseLeave:Connect(function()
+                    MouseFrame.Visible = false
+            end)
 			Toggle.Parent = TabPage
 			Toggle.BackgroundTransparency = 1
 			Toggle.UIStroke.Transparency = 1
