@@ -150,6 +150,7 @@ local Hidden = false
 local Debounce = false
 local Notifications = Rayfield.Notifications
 local SelectedTheme = RayfieldLibrary.Theme[tonumber(readfile("TemHubV3/currenttheme.txt"))]
+Rayfield.Main.Topbar.Theme.Visible = false
 function ChangeTheme(ThemeName)
 	SelectedTheme = RayfieldLibrary.Theme[ThemeName]
 	for _, obj in ipairs(Rayfield:GetDescendants()) do
