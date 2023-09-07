@@ -6,7 +6,7 @@ iRay  | Programming
 ]]
 
 
-print("Temmies Rayfield Edit v4 (stuff update 7)")
+print("Temmies Rayfield Edit v4")
 local Release = "Beta 7R"
 local NotificationDuration = 6.5
 local RayfieldFolder = "TemHubV4"
@@ -149,7 +149,7 @@ local Minimised = false
 local Hidden = false
 local Debounce = false
 local Notifications = Rayfield.Notifications
-local SelectedTheme = RayfieldLibrary.Theme[tonumber(readfile("TemHubV3/currenttheme.txt"))]
+local SelectedTheme = RayfieldLibrary.Theme[tonumber(readfile(RayfieldFolder.."/currenttheme.txt"))]
 Rayfield.Main.Topbar.Theme.Visible = false
 function ChangeTheme(ThemeName)
 	SelectedTheme = RayfieldLibrary.Theme[ThemeName]
@@ -2192,7 +2192,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 		Hide()
 	end
 end)
-local selectedtheme = tonumber(readfile("TemHubV3/currenttheme.txt"))
+local selectedtheme = tonumber(readfile(RayfieldFolder.."currenttheme.txt"))
 if not RayfieldLibrary.Theme[selectedtheme] then
     selectedtheme = 1
 end
